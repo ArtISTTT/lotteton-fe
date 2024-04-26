@@ -11,6 +11,8 @@
     "lint:css:fix": "stylelint '**/*.scss' --fix"
   },
   "dependencies": {
+    "@twa-dev/sdk": "^7.0.0",
+    "pinia": "^2.1.7",
     "vue": "^3.4.21"
   },
   "devDependencies": {
