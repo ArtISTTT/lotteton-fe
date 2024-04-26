@@ -5,19 +5,12 @@ import WebApp from "@twa-dev/sdk";
 
 <template>
     <div>
-        <a href="https://vitejs.dev" target="_blank">
-            <img src="/vite.svg" class="logo" alt="Vite logo" />
-        </a>
-        <a href="https://vuejs.org/" target="_blank">
-            <img src="./assets/vue.svg" class="log o vue" alt="Vue logo" />
-        </a>
         <div className="card">
             <button @click="WebApp.showAlert(`ТЫ ЕБАНАТ`)">
                 Нажми, хули смотришь?
             </button>
         </div>
     </div>
-    <HelloWorld msg="Vite + Vue" />
 </template>
 
 <style scoped>
