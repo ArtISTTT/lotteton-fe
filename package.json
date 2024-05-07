@@ -25,6 +25,7 @@
     "eslint-plugin-import": "^2.25.2",
     "eslint-plugin-vue": "^9.25.0",
     "globals": "^15.0.0",
+    "rollup-plugin-copy": "^3.5.0",
     "sass": "^1.75.0",
     "stylelint": "^16.4.0",
     "stylelint-config-standard-scss": "^13.1.0",
