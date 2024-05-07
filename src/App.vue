@@ -1,5 +1,13 @@
 <script setup>
 import WebApp from "@twa-dev/sdk";
+import { useRouter } from "vue-router";
+import { onMounted } from "vue";
+
+const router = useRouter();
+
+onMounted(() => {
+    router.push("/start");
+});
 </script>
 
 <template>
