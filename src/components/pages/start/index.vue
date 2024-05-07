@@ -3,7 +3,7 @@
         <div class="ton-fight">TON FIGHT</div>
         <div class="boss">
             <div class="boss-bubble">
-                <span>You have to Connect <br />TON Wallet</span>
+                <span>You have to connect <br />TON wallet</span>
                 <div class="right-point"></div>
             </div>
             <img class="boss-img" src="@/assets/images/boss.webp" />

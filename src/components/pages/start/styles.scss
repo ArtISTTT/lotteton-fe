@@ -18,6 +18,7 @@
         margin-left: auto;
         margin-right: 10vw;
         margin-top: 10vw;
+        font-family: BebasNeue;
     }
 
     .boss {
@@ -46,6 +47,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            font-family: BebasNeue;
 
             .right-point{
                 width: 0;
@@ -63,7 +65,7 @@
 
     .bottom {
         height: 200px;
-        background: #10161feb;
+        background: #000000;
         // margin-bottom: 12vw;
         border-top: 3px solid #140200;
         display: flex;
@@ -97,7 +99,6 @@
             }
             
             & > div {
-                font-family: -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', Arial, Tahoma, Verdana, sans-serif;
                 font-weight: 590;
                 font-size: 19px;
                 line-height: 22px;
