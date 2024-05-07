@@ -1,0 +1,21 @@
+{
+    "compilerOptions": {
+      "allowJs": true,
+      "target": "esnext",
+      "module": "esnext",
+      "strict": true,
+      "jsx": "preserve",
+      "importHelpers": true,
+      "esModuleInterop": true,
+      "forceConsistentCasingInFileNames": true,
+      "skipLibCheck": true,
+      "moduleResolution": "node",
+      "allowSyntheticDefaultImports": true,
+      "baseUrl": ".",
+      "paths": {
+        "@/*": ["src/*"]
+      }
+    },
+    "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue", "src/**/*.js"],
+    "exclude": ["node_modules"]
+  }

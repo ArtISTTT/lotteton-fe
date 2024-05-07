@@ -1,0 +1,108 @@
+.start {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 100dvh;
+
+    .ton-fight {
+        background: #fc5250;
+        border: 2px solid #140200;
+        color: #fff4dc;
+        font-size: 48px;
+        line-height: 48px;
+        padding: 16px 8px;
+        padding-bottom: 8px;
+        letter-spacing: -1px;
+        width: fit-content;
+        margin-bottom: auto;
+        margin-left: auto;
+        margin-right: 10vw;
+        margin-top: 10vw;
+    }
+
+    .boss {
+        width: fit-content;
+        margin-right: 10vw;
+        margin-left: auto;
+        position: relative;
+
+        &-img {
+            width: 180px;
+            margin-bottom: -10px;
+        }
+
+        &-bubble {
+            height: 72px;
+            width: 150px;
+            background-color: #ffeed4;
+            color: #140200;
+            position: absolute;
+            border-radius: 10%;
+            right: 0;
+            top: 16px;
+            left: -18px;
+            transform: translate(-100%, -100%);
+            font-size: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .right-point{
+                width: 0;
+                height: 0;
+                border-left: 10px solid transparent;
+                border-right: 10px solid transparent;
+                border-top: 50px solid #ffeed4;
+                position: absolute;
+                top: 45%;
+                right: -10%;
+                transform: rotate(-60deg);
+            }
+        }
+    }
+
+    .bottom {
+        height: 200px;
+        background: #10161feb;
+        // margin-bottom: 12vw;
+        border-top: 3px solid #140200;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .connect-button {
+            background-color: #0098EA;
+            color: #FFFFFF;
+            box-shadow: 0 4px 24px rgba(0,0,0, 0.16);
+            padding: 12px 24px 12px 20px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            height: 56px;
+            border: none;
+            border-radius: 100vh;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 590;
+            line-height: 18px;
+            transition: transform 0.125s ease-in-out;
+
+            &:hover {
+                transform: scale(1.02);
+            }
+
+            img {
+                width: 28px;
+                height: 28px;
+            }
+            
+            & > div {
+                font-family: -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', Arial, Tahoma, Verdana, sans-serif;
+                font-weight: 590;
+                font-size: 19px;
+                line-height: 22px;
+                color: #FFFFFF;
+            }
+        }
+    }
+}

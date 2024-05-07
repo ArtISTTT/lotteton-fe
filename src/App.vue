@@ -1,16 +1,9 @@
 <script setup>
-import HelloWorld from "./components/HelloWorld.vue";
 import WebApp from "@twa-dev/sdk";
 </script>
 
 <template>
-    <div>
-        <div className="card">
-            <button @click="WebApp.showAlert(`ТЫ ЕБАНАТ`)">
-                Нажми, хули смотришь?
-            </button>
-        </div>
-    </div>
+    <router-view />
 </template>
 
 <style scoped>
