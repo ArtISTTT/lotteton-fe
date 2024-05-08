@@ -3,9 +3,13 @@
     flex-direction: column;
     justify-content: flex-end;
     height: 100dvh;
+    background: url('src/assets/images/bg-1.webp');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position-y: bottom;
+
 
     .ton-fight {
-        background: #000;
         border: 2px solid #ffeed4;
         color: #fff4dc;
         font-size: 48px;
@@ -23,13 +27,12 @@
 
     .boss {
         width: fit-content;
-        margin-right: 10vw;
-        margin-left: auto;
+        margin: 0 auto;
         position: relative;
 
         &-img {
-            width: 180px;
-            margin-bottom: -10px;
+            width: 70vw;
+            filter: drop-shadow(-3px 3px 10px #364759);
         }
 
         &-bubble {
@@ -64,13 +67,10 @@
     }
 
     .bottom {
-        height: 200px;
-        background: #000000;
-        // margin-bottom: 12vw;
-        border-top: 3px solid #140200;
+        height: 160px;
         display: flex;
         justify-content: center;
-        align-items: center;
+        align-items:start;
 
         .connect-button {
             background-color: #0098EA;
