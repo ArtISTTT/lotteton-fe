@@ -18,7 +18,7 @@ app.use(router)
 app.use(vuetify)
 app.mount('#app')
 
-if (WebApp.initDataUnsafe) {
-    WebApp.MainButton.hide();
-}
+// if (WebApp.initDataUnsafe) {
+//     WebApp.MainButton.hide();
+// }
 
