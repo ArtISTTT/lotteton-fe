@@ -3,9 +3,10 @@ import vue from '@vitejs/plugin-vue'
 import basicSsl from '@vitejs/plugin-basic-ssl';
 import copy from 'rollup-plugin-copy';
 import vueJsx from '@vitejs/plugin-vue-jsx';
+import { nodePolyfills } from 'vite-plugin-node-polyfills';
 
 export default defineConfig({
-  plugins: [vue(), basicSsl(), vueJsx()],
+  plugins: [vue(), basicSsl(), vueJsx(), nodePolyfills()],
   base: './',
   resolve: {
     alias: {

@@ -73,7 +73,7 @@
         justify-content: center;
         align-items:start;
 
-        .connect-button {
+        .connect-button :deep(button) {
             background-color: #0098EA;
             color: #FFFFFF;
             box-shadow: 0 4px 24px rgba(0,0,0, 0.16);

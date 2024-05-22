@@ -6,9 +6,14 @@
         </div>
 
         <div class="bottom">
-            <button class="connect-button">
-                <img src="@/assets/images/ton.svg" />
-                <div @click="onConnectWallter()">Connect Wallet</div>
+            <button
+                id="ton-connect"
+                class="connect-button"
+                @click="onConnectWallter()"
+            >
+                <!-- <img src="@/assets/images/ton.svg" /> -->
+                <!-- <div id="ton-connect"></div> -->
+                <!-- <div  @click="onConnectWallter()"></div> -->
             </button>
         </div>
     </div>
@@ -16,27 +21,38 @@
 
 <script setup>
 import { useAppStore } from "@/stores";
+import { TonConnectUI } from "@tonconnect/ui";
+import { onMounted, reactive, ref } from "vue";
 import { useRouter } from "vue-router";
-import { TonClient } from "@twa-dev/sdk";
 
 const store = useAppStore();
 const router = useRouter();
+const tonConnectUIInstance = reactive();
+
+onMounted(() => {
+    tonConnectUIInstance = new TonConnectUI({
+        manifestUrl:
+            "https://firebasestorage.googleapis.com/v0/b/walletfight.appspot.com/o/manifest.json?alt=media&token=6d8c679f-2035-4a41-a2c3-935ef7536aff",
+        buttonRootId: "ton-connect",
+    });
+});
 
 const onConnectWallter = async () => {
     try {
-        const client = new TonClient({
-            endpoint: "https://toncenter.com/api/v2/jsonRPC",
+        if (!tonConnectUIInstance) {
+            return;
+        }
+
+        async function connectToWallet() {
+            const connectedWallet = await tonConnectUIInstance.connectWallet();
+
+            console.log(connectedWallet);
+        }
+
+        // Call the function
+        connectToWallet().catch((error) => {
+            console.error("Error connecting to wallet:", error);
         });
-
-        const provider = await client.wallet.createWalletProvider();
-        const walletAddress = await provider.getAddress();
-
-        store.user = {
-            address: walletAddress,
-            skinId: "1",
-        };
-
-        console.log("ADDRESS: ", walletAddress);
 
         router.push({ name: "home" });
     } catch (e) {
