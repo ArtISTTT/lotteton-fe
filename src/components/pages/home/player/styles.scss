@@ -1,0 +1,17 @@
+.player {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    justify-content: center;
+    align-items: center;
+    img {
+        width: 30vw;
+    }
+
+    .address {
+        max-width: 40vw;
+        overflow: hidden;
+        text-align: center;
+        color: #0098EA;
+    }
+}

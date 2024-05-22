@@ -2,16 +2,14 @@
 import WebApp from "@twa-dev/sdk";
 import { useRouter } from "vue-router";
 import { onMounted } from "vue";
-
-const router = useRouter();
-
-onMounted(() => {
-    router.push("/start");
-});
 </script>
 
 <template>
-    <router-view />
+    <router-view v-slot="{ Component }">
+        <transition name="fade">
+            <component :is="Component" />
+        </transition>
+    </router-view>
 </template>
 
 <style scoped>

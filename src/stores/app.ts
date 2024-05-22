@@ -9,7 +9,7 @@ export interface IStore {
 
 type IStoreDef = StoreDefinition<'app', IStore, {}, {}>;
 
-export const useCounterStore: IStoreDef = defineStore('app', {
+export const useAppStore: IStoreDef = defineStore('app', {
   state: (): IStore => {
     return { 
       user: null,
