@@ -4,13 +4,15 @@
         <img
             :src="`src/assets/images/players/player-${store.user.skinId}.webp`"
             class="player-img"
-            @click="increment"
         />
-        <img
-            v-if="count > 5"
-            src="@/assets/images/wallet.webp"
-            class="wallet"
-        />
+        <Transition>
+            <img
+                v-if="count < 5"
+                src="@/assets/images/wallet.webp"
+                class="wallet"
+                @click="increment"
+            />
+        </Transition>
     </div>
 </template>
 

@@ -28,6 +28,10 @@
 
   margin: 0 auto;
   margin-bottom: 12vw;
+
+  &:focus {
+    outline: none;
+  }
 }
 
 .glowing-txt {
