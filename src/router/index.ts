@@ -18,8 +18,6 @@ const router = createRouter({
 router.beforeEach((to: any, from: any, next: (p?: any) => void) => {
   const authStore = useAppStore();
 
-	to
-
 	if (to.name === 'start' && to.meta.authedOnly) {
 		next({ name: 'home' });
 	} else if (to.meta.authedOnly) {
