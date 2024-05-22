@@ -1,8 +1,11 @@
+import { type ConnectedWallet, type TonConnectUI } from "@tonconnect/ui"
 import { type Dayjs } from "dayjs"
 
 export type IUser = {
     address: string
     skinId: string
+    connectedWallet: ConnectedWallet | undefined | null
+    tonConnectUIInstance: TonConnectUI | undefined | null
 }
 
 export enum GameStatus {

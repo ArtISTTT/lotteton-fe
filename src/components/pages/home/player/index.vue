@@ -2,7 +2,9 @@
     <div class="player" :class="{ reverted }">
         <!-- <div class="address">{{ store.user.address }}</div> -->
         <img
-            :src="`src/assets/images/players/player-${store.user.skinId}.webp`"
+            :src="`src/assets/images/players/player-${
+                store.user?.skinId || 1
+            }.webp`"
             class="player-img"
         />
         <Transition>
