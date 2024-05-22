@@ -1,0 +1,18 @@
+.header {
+    position: absolute;
+    top: 24px;
+    right: 0;
+    height: 48px;
+    width: 35vw;
+    background: #297489;
+    border-radius: 24px 0 0 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-left: 6px;
+    font-size: 14px;
+
+    .coin {
+        width: 32px;
+    }
+}

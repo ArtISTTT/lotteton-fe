@@ -1,7 +1,10 @@
 @import url("https://fonts.googleapis.com/css?family=Raleway");
 
 .glowing-btn {
-  position: relative;
+  position: absolute;
+  bottom: 7vw;
+  left: 50%;
+  transform: translateX(-50%);
   color: var(--glow-color);
   cursor: pointer;
   padding: 0.35em 1em;
