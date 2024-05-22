@@ -6,6 +6,7 @@ import WebApp from '@twa-dev/sdk'
 import { router } from './router'
 import 'vuetify/dist/vuetify.min.css'
 import { createVuetify } from 'vuetify/lib/framework.mjs'
+import Countdown from 'vue3-countdown'
 
 WebApp.ready();
 
@@ -16,6 +17,9 @@ const vuetify = createVuetify()
 app.use(pinia)
 app.use(router)
 app.use(vuetify)
+
+app.component(Countdown.name as string, Countdown)
+
 app.mount('#app')
 
 // if (WebApp.initDataUnsafe) {

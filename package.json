@@ -18,6 +18,7 @@
     "pinia": "^2.1.7",
     "vue": "^3.4.21",
     "vue-router": "^4.3.2",
+    "vue3-countdown": "^1.0.6",
     "vuetify": "^3.6.4"
   },
   "devDependencies": {

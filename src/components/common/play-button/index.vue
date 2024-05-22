@@ -1,5 +1,5 @@
 <template>
-    <button class="glowing-btn">
+    <button class="glowing-btn" @click="$emit('click')">
         <span class="glowing-txt"
             >F<span class="faulty-letter">I</span>GHT</span
         >

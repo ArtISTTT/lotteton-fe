@@ -1,5 +1,5 @@
 <template>
-    <div class="player">
+    <div class="player" :class="{ reverted }">
         <!-- <div class="address">{{ store.user.address }}</div> -->
         <img
             :src="`src/assets/images/players/player-${store.user.skinId}.webp`"
@@ -21,6 +21,9 @@ import { useAppStore } from "@/stores";
 import { ref } from "vue";
 
 const count = ref(0);
+const props = defineProps({
+    reverted: Boolean,
+});
 
 function increment() {
     count.value++;
