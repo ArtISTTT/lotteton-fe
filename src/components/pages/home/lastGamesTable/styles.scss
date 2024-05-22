@@ -1,5 +1,9 @@
 .table-wrapper {
+    border-radius: 16px;
     margin: 16px;
+    -webkit-box-shadow: 0px 29px 66px -20p var(--glow-color);
+    -moz-box-shadow: 0px 29px 66px -20px  var(--glow-color);
+    box-shadow: 0px 29px 66px -20px var(--glow-color);
 }
 
 .table {

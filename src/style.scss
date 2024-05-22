@@ -13,6 +13,8 @@
   -moz-osx-font-smoothing: grayscale;
   height: 100dvh;
   overflow-x: hidden;
+
+  --glow-color: hsl(186 100% 69%);
 }
 
 @font-face {
