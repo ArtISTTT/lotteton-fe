@@ -5,7 +5,8 @@ export type IUser = {
     address: string
     skinId: string
     connectedWallet: ConnectedWallet | undefined | null
-    tonConnectUIInstance: TonConnectUI | undefined | null
+    balance: bigint
+    // tonConnectUIInstance: TonConnectUI | undefined | null
 }
 
 export enum GameStatus {

@@ -10,7 +10,9 @@
             <div class="name">Balance</div>
             <div class="value">
                 <img src="@/assets/images/coin.webp" class="coin" />
-                <span>34 500.787</span>
+                <span>{{
+                    parseBalance(store.user?.balance ?? BigInt(0))
+                }}</span>
             </div>
         </div>
     </div>
@@ -18,6 +20,7 @@
 
 <script setup lang="ts">
 import { useAppStore } from "@/stores";
+import { parseBalance } from "@/utils/parse-balance";
 
 const store = useAppStore();
 </script>
