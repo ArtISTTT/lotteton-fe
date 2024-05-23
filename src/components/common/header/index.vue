@@ -3,7 +3,7 @@
         <div class="left">
             <div class="name">Address</div>
             <div class="value">
-                {{ store.user?.address || "AAAAAAAAAAAAAAAAAAAAAA" }}
+                {{ formattedAddress }}
             </div>
         </div>
         <div class="right">
@@ -21,8 +21,18 @@
 <script setup lang="ts">
 import { useAppStore } from "@/stores";
 import { parseBalance } from "@/utils/parse-balance";
+import { Address } from "@/utils/ton-access";
+import { computed } from "vue";
 
 const store = useAppStore();
+
+const formattedAddress = computed(() => {
+    if (store.user?.address) {
+        return Address.parseRaw(store.user.address).toString();
+    }
+
+    return "-";
+});
 </script>
 
 
