@@ -1,8 +1,15 @@
 import { getHttpEndpoint } from "@orbs-network/ton-access";
 import { TonClient, Address,  } from "ton";
 
-const endpoint = await getHttpEndpoint(); // get the decentralized RPC endpoint
-const client = new TonClient({ endpoint })
+let endpoint: string;
+let client: TonClient;
+
+const getClient = async () => {
+    endpoint = await getHttpEndpoint(); // get the decentralized RPC endpoint
+    client = new TonClient({ endpoint })
+}
+
+getClient()
 
 export {
     Address,
