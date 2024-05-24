@@ -1,45 +1,41 @@
-import { useAppStore } from '@/stores';
+import { type IStore, useAppStore } from '@/stores';
 import { Address, client } from '@/utils/ton-access';
 import { TonConnectUI } from '@tonconnect/ui';
+import { type Store } from 'pinia';
 import { ref } from 'vue';
-import { useRouter } from 'vue-router';
+import { Router, useRouter } from 'vue-router';
 
-export function useConnectWallet(buttonRootId?: string) {
+export const getAddressBalance = async (address: string) => {
+  const rawAddress = Address.parseRaw(address);
+
+  return await client.getBalance(rawAddress);
+};
+
+export const createTonConnect = async () => {
+  const tonConnectUIInstance = new TonConnectUI({
+    manifestUrl: import.meta.env.VITE_MANIFEST_URL,
+  }) as TonConnectUI;
+
+  await new Promise(resolve => setTimeout(resolve, 500));
+
+  return tonConnectUIInstance;
+};
+
+export function useConnectWallet() {
   const connected = ref<boolean>(false);
   const store = useAppStore();
   const router = useRouter();
 
-  const createTonConnect = async () => {
-    if (!store.tonConnectUIInstance?.connected) {
-      store.tonConnectUIInstance = new TonConnectUI({
-        manifestUrl: import.meta.env.VITE_MANIFEST_URL,
-        buttonRootId,
-      }) as TonConnectUI;
-    } else {
-      connected.value = true;
+  const requestWalletConnection = () => {
+    if (!store.tonConnectUIInstance) {
+      return;
     }
 
-    store.tonConnectUIInstance.onStatusChange(async walletInfo => {
-      if (!walletInfo) {
-        return;
-      }
-
-      const address = Address.parseRaw(walletInfo.account.address);
-      const balance = await client.getBalance(address);
-
-      store.user = {
-        address: walletInfo.account.address,
-        connectedWallet: walletInfo,
-        balance: balance || BigInt(0),
-        skinId: '1',
-      };
-
-      router.push({ name: 'home' });
-    });
+    store.tonConnectUIInstance.modal.open();
   };
 
   return {
     connected,
-    createTonConnect,
+    requestWalletConnection,
   };
 }

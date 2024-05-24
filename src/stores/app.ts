@@ -1,8 +1,8 @@
-import { defineStore, StoreDefinition } from 'pinia';
+import { defineStore, Store, StoreDefinition } from 'pinia';
 import type { IGame, IPrevGameItem, IUser } from '../types/store';
 import { TonConnectUI } from '@tonconnect/ui';
 
-export interface IStore {
+export interface IStoreData {
   user: IUser | null | undefined;
   game: IGame | null;
   prevGames: IPrevGameItem[];
@@ -10,10 +10,12 @@ export interface IStore {
   tonConnectUIInstance?: TonConnectUI;
 }
 
-type IStoreDef = StoreDefinition<'app', IStore, {}, {}>;
+export type IStore = Store<'app', IStoreData, {}, {}>;
+
+type IStoreDef = StoreDefinition<'app', IStoreData, {}, {}>;
 
 export const useAppStore: IStoreDef = defineStore('app', {
-  state: (): IStore => {
+  state: (): IStoreData => {
     return {
       user: null,
       game: null,

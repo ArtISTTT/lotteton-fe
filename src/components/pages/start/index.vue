@@ -6,24 +6,18 @@
     </div>
 
     <div class="bottom">
-      <button id="ton-connect" class="connect-button"></button>
+      <button @click="requestWalletConnection" class="connect-button">
+        <img src="@/assets/images/ton.svg" />
+        <div>Connect Wallet</div>
+      </button>
     </div>
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { useConnectWallet } from '@/hooks/useConnectWallet';
-import { useAppStore } from '@/stores';
 
-const { createTonConnect } = useConnectWallet();
-const store = useAppStore();
-
-onMounted(async () => {
-  console.log('createTonConnect');
-  if (!store.connected) {
-    await createTonConnect('ton-connect');
-  }
-});
+const { requestWalletConnection } = useConnectWallet();
 </script>
 
 <style scoped lang="scss" src="./styles.scss"></style>
