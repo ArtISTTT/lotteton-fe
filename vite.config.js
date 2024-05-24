@@ -1,5 +1,5 @@
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
+import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
 import basicSsl from '@vitejs/plugin-basic-ssl';
 import copy from 'rollup-plugin-copy';
 import vueJsx from '@vitejs/plugin-vue-jsx';
@@ -18,13 +18,11 @@ export default defineConfig({
     rollupOptions: {
       plugins: [
         copy({
-          targets: [
-            { src: 'src/tonconnect-manifest.json', dest: 'docs' },
-          ],
+          targets: [{ src: 'src/tonconnect-manifest.json', dest: 'docs' }],
           verbose: true,
-          hook: 'writeBundle'
-        })
-      ]
+          hook: 'writeBundle',
+        }),
+      ],
     },
-  }
+  },
 });

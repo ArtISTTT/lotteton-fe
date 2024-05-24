@@ -1,43 +1,45 @@
 import { useAppStore } from '@/stores';
 import { Address, client } from '@/utils/ton-access';
-import { ConnectedWallet, TonConnectUI } from '@tonconnect/ui';
-import { onMounted, ref, watch } from 'vue';
+import { TonConnectUI } from '@tonconnect/ui';
+import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 
-export function useConnectWallet() {
-	const tonConnectUIInstance = ref<TonConnectUI | null>(null);
-	const store = useAppStore()
-	const router = useRouter()
+export function useConnectWallet(buttonRootId?: string) {
+  const connected = ref<boolean>(false);
+  const store = useAppStore();
+  const router = useRouter();
 
-	onMounted(async () => {
-			tonConnectUIInstance.value = new TonConnectUI({
-					manifestUrl: import.meta.env.VITE_MANIFEST_URL,
-					buttonRootId: "ton-connect",
-			}) as TonConnectUI;
+  const createTonConnect = async () => {
+    if (!store.tonConnectUIInstance?.connected) {
+      store.tonConnectUIInstance = new TonConnectUI({
+        manifestUrl: import.meta.env.VITE_MANIFEST_URL,
+        buttonRootId,
+      }) as TonConnectUI;
+    } else {
+      connected.value = true;
+    }
 
-			tonConnectUIInstance.value.onStatusChange(
-				async walletInfo => {
-							if (!walletInfo) {
-								return
-							}
+    store.tonConnectUIInstance.onStatusChange(async walletInfo => {
+      if (!walletInfo) {
+        return;
+      }
 
-							const address = Address.parseRaw(walletInfo.account.address)
-							const balance = await client.getBalance(address);
+      const address = Address.parseRaw(walletInfo.account.address);
+      const balance = await client.getBalance(address);
 
-							store.user = {
-								address: walletInfo.account.address,
-								connectedWallet: walletInfo,
-								balance: balance || BigInt(0),
-								skinId: "1",
-							};
+      store.user = {
+        address: walletInfo.account.address,
+        connectedWallet: walletInfo,
+        balance: balance || BigInt(0),
+        skinId: '1',
+      };
 
-							router.push({ name: "home" });
-							
-					} 
-			);
-	});
+      router.push({ name: 'home' });
+    });
+  };
 
   return {
-		tonConnectUIInstance,
-	};
+    connected,
+    createTonConnect,
+  };
 }
