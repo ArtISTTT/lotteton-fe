@@ -16,7 +16,7 @@ export const createTonConnect = async () => {
     manifestUrl: import.meta.env.VITE_MANIFEST_URL,
   }) as TonConnectUI;
 
-  await new Promise(resolve => setTimeout(resolve, 500));
+  await new Promise(resolve => setTimeout(resolve, 200));
 
   return tonConnectUIInstance;
 };
@@ -32,6 +32,22 @@ export function useConnectWallet() {
     }
 
     store.tonConnectUIInstance.modal.open();
+
+    store.tonConnectUIInstance.onStatusChange(async wallet => {
+      if (!wallet) {
+        return;
+      }
+      const balance = await getAddressBalance(wallet.account.address);
+
+      store.user = {
+        address: wallet.account.address,
+        connectedWallet: wallet,
+        balance: balance || BigInt(0),
+        skinId: '1',
+      };
+
+      router.push({ name: 'home' });
+    });
   };
 
   return {

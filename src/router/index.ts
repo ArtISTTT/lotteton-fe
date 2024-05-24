@@ -39,7 +39,6 @@ const processAuthMiddleware = (
   from: any,
   next: (p?: any) => void
 ) => {
-  console.log(authed, to.meta);
   if (authed && to.meta.notAuthedOnly) {
     next({ name: 'home' });
   } else if (to.meta.authedOnly && !authed) {
@@ -63,6 +62,7 @@ router.beforeEach(async (to: any, from: any, next: (p?: any) => void) => {
   await getClient();
   const tonConnectUIInstance = await createTonConnect();
 
+  store.tonConnectUIInstance = tonConnectUIInstance;
   if (!tonConnectUIInstance.account) {
     next({ name: 'start' });
 
@@ -71,7 +71,6 @@ router.beforeEach(async (to: any, from: any, next: (p?: any) => void) => {
 
   const balance = await getAddressBalance(tonConnectUIInstance.account.address);
 
-  store.tonConnectUIInstance = tonConnectUIInstance;
   store.user = {
     address: tonConnectUIInstance.account.address,
     connectedWallet: tonConnectUIInstance.wallet as Wallet,
