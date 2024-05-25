@@ -7,6 +7,12 @@
       <Player class="item player-3" reverted />
       <Player class="item player-4" reverted />
     </div>
+    <div class="actions">
+      <button class="back-button" @click="$router.push('/')">
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+         Cancel search
+      </button>
+    </div>
     <div class="waiting-wrapper">
       <span>Waiting for players...</span>
       <countdown :time="60 * 3 * 1000" format="mm:ss" class="time-left" />

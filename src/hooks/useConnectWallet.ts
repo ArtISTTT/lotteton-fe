@@ -4,9 +4,14 @@ import { TonConnectUI } from '@tonconnect/ui';
 import { type Store } from 'pinia';
 import { ref } from 'vue';
 import { Router, useRouter } from 'vue-router';
+import { getClient } from '@/utils/ton-access';
 
 export const getAddressBalance = async (address: string) => {
   const rawAddress = Address.parseRaw(address);
+
+  if (!client) {
+    await getClient();
+  }
 
   return await client.getBalance(rawAddress);
 };
