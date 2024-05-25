@@ -11,12 +11,12 @@
     .actions {
       display: flex;
       position: absolute;
-      bottom: 22%;
-      left: 50%;
-      transform: translateX(-50%);
+      bottom: 28%;
+      width: 100%;
+      justify-content: center;
 
       .back-button {
-        color:  rgb(80, 185, 243);
+        color: var(--glow-color);
         background: #213547;
         display: flex;
         align-items: center;
@@ -27,7 +27,7 @@
         svg {
           width: 5vw;
           height: 5vw;
-          filter: invert(65%) sepia(19%) saturate(1355%) hue-rotate(160deg) brightness(98%) contrast(95%);
+          filter: invert(83%) sepia(20%) saturate(1607%) hue-rotate(155deg) brightness(104%) contrast(101%);
         }
       }
     }
