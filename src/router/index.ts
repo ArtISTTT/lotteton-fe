@@ -23,6 +23,10 @@ const routes = [
     name: 'start',
     meta: { authNotRequired: true },
   },
+  {
+    path: '/:pathMatch(.*)*',
+    redirect: { name: 'home' }
+  }
 ];
 
 const router = createRouter({
