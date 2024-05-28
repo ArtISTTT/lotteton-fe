@@ -4,14 +4,15 @@ import {
   type TonConnectUI,
 } from '@tonconnect/ui';
 import { type Dayjs } from 'dayjs';
+import { IBEUser } from './api';
 
-export type IUser = {
+export interface IUser extends IBEUser {
   address: string;
   skinId: string;
   connectedWallet: Wallet;
-  balance: bigint;
+  tonBalance: bigint;
   // tonConnectUIInstance: TonConnectUI | undefined | null
-};
+}
 
 export enum GameStatus {
   START = 'START',

@@ -10,7 +10,7 @@
       <!-- <div class="name">Balance</div> -->
       <div class="value">
         <img src="@/assets/images/coin.webp" class="coin" />
-        <span>{{ parseBalance(store.user?.balance ?? BigInt(0)) }}</span>
+        <span>{{ store.user?.balance || 0 }}</span>
       </div>
     </div>
   </div>
@@ -19,7 +19,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useAppStore } from '@/stores';
-import { parseBalance } from '@/utils/parse-balance';
 import { Address } from '@/utils/ton-access';
 
 const store = useAppStore();

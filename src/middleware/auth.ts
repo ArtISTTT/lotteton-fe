@@ -1,9 +1,14 @@
 import { useAppStore } from '@/stores';
 import { createTonConnect, getAddressBalance } from '@/hooks/useConnectWallet';
-import { Wallet } from '@tonconnect/ui';
+import { toUserFriendlyAddress, Wallet } from '@tonconnect/ui';
 import { getClient } from '@/utils/ton-access';
+import { getUser } from '@/api/auth';
 
-const handleAuthRouting = async (to: any, from: any, next: (p?: any) => void) => {
+const handleAuthRouting = async (
+  to: any,
+  from: any,
+  next: (p?: any) => void
+) => {
   const store = useAppStore();
 
   if (store.tonConnectUIInstance) {
@@ -20,11 +25,16 @@ const handleAuthRouting = async (to: any, from: any, next: (p?: any) => void) =>
   }
   const balance = await getAddressBalance(tonConnectUIInstance.account.address);
 
+  const data = await getUser({
+    walletId: tonConnectUIInstance.account.address,
+  });
+
   store.user = {
     address: tonConnectUIInstance.account.address,
     connectedWallet: tonConnectUIInstance.wallet as Wallet,
-    balance: balance || BigInt(0),
+    tonBalance: balance || BigInt(0),
     skinId: '1',
+    ...data,
   };
 
   handleRouteGuard(true, to, from, next);

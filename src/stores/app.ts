@@ -1,6 +1,7 @@
 import { defineStore, Store, StoreDefinition } from 'pinia';
 import type { IGame, IPrevGameItem, IUser } from '../types/store';
 import { TonConnectUI } from '@tonconnect/ui';
+import { IBEUser } from '@/types/api';
 
 export interface IStoreData {
   user: IUser | null | undefined;
@@ -8,6 +9,7 @@ export interface IStoreData {
   prevGames: IPrevGameItem[];
   authChecked: boolean;
   tonConnectUIInstance?: TonConnectUI;
+  BEData?: IBEUser;
 }
 
 export type IStore = Store<'app', IStoreData, {}, {}>;

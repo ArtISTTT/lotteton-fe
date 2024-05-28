@@ -5,6 +5,7 @@ import { type Store } from 'pinia';
 import { ref } from 'vue';
 import { Router, useRouter } from 'vue-router';
 import { getClient } from '@/utils/ton-access';
+import { register } from '@/api/auth';
 
 export const getAddressBalance = async (address: string) => {
   const rawAddress = Address.parseRaw(address);
@@ -44,11 +45,16 @@ export function useConnectWallet() {
       }
       const balance = await getAddressBalance(wallet.account.address);
 
+      const data = await register({
+        walletId: wallet.account.address,
+      });
+
       store.user = {
         address: wallet.account.address,
         connectedWallet: wallet,
-        balance: balance || BigInt(0),
+        tonBalance: balance || BigInt(0),
         skinId: '1',
+        ...data,
       };
 
       router.push({ name: 'home' });
