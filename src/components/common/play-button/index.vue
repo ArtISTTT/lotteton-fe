@@ -9,7 +9,14 @@
         class="time-left"
       />
     </div>
-    <button class="glowing-btn" @click="$emit('click')">
+    <button
+      v-if="timeLeftForDropMs === 0"
+      class="glowing-btn small"
+      @click="$emit('onGetDrop')"
+    >
+      <span class="glowing-txt">GET +42 durev</span>
+    </button>
+    <button v-else class="glowing-btn" @click="$emit('onFight')">
       <span class="glowing-txt">F<span class="faulty-letter">I</span>GHT</span>
     </button>
   </div>
@@ -33,8 +40,6 @@ const timeLeftForDropMs = computed(() => {
 
   const diff = now.diff(lastDailyDrop, 'millisecond');
   const timeLeft = 24 * 60 * 60 * 1000 - diff;
-
-  console.log(timeLeft);
 
   return timeLeft > 0 ? timeLeft : 0;
 });

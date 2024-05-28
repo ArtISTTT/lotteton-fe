@@ -18,3 +18,9 @@ export type IBEUser = {
   fightsCount: number;
   lastDailyDrop: Date;
 };
+
+export type IGetDailyDrop = {
+  walletId: string;
+};
+
+export type IGetDailyDropReturn = IBEUser;
