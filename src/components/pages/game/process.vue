@@ -40,10 +40,10 @@ import { computed, ref } from 'vue';
 
 const winningPairs = ref([]);
 const addresses = [
-  'EQCbPqgKl9XdfjsdjfiosdfidsFDZGCIZQoOgMcSI__r_9aA',
-  'EQCbPqgKlFDJsdfjejfmsdfdsBboZGCIZQoOgMcSI__r_9aA',
-  'EQCbPqgKl9XdLPQOKVmvs0yuPBboZGCIZQoOgMcSI__r_9aA',
-  'EQCbPqgKl9XdMVmczxMVDSoefmsOSDFkoQoOgMcSI__r_9aA',
+  'EQCbPqgKl9XdfjsdjfiosdfidsFDZGCIZQoOgMcSI',
+  'EQCbPqgKlFDJsdfjejfmsdfdsBboZGCIZQoOgMcSI',
+  'EQCbPqgKl9XdLPQOKVmvs0yuPBboZGCIZQoOgMcSI',
+  'EQCbPqgKl9XdMVmczxMVDSoefmsOSDFkoQoOgMcSI',
 ];
 const addressesWithHighlitePairsHTML = computed(() => {
   console.log(addresses);
