@@ -10,11 +10,13 @@
 import Waiting from './waiting.vue';
 import Process from './process.vue';
 import Header from '@/components/common/header/index.vue';
+import { ref } from 'vue';
 
-const isWaiting = true;
+const isWaiting = ref(true);
 
 const startGame = () => {
-  isWaiting = false;
+  console.log('start game');
+  isWaiting.value = false;
 };
 </script>
 

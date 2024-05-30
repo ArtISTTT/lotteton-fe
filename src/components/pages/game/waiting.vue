@@ -25,7 +25,7 @@
     <div class="waiting-wrapper">
       <span>Waiting for players...</span>
       <countdown
-        :time="1 * 60 * 1000"
+        :time="0.5 * 60 * 1000"
         format="mm:ss"
         class="time-left"
         @finish="$emit('startGame')"
