@@ -26,6 +26,7 @@
     "vue": "^3.4.21",
     "vue-router": "^4.3.2",
     "vue3-countdown": "^1.0.6",
+    "vue3-lottie": "^3.3.0",
     "vuetify": "^3.6.4",
     "yarn": "^1.22.22"
   },

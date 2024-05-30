@@ -30,6 +30,7 @@ import { computed } from 'vue';
 const { user } = useAppStore();
 
 const timeLeftForDropMs = computed(() => {
+  return 1;
   // lastDailyDrop is a dayjs when i got last drop. Drop can be done onse per 24 hours
   const lastDailyDrop = user.lastDailyDrop;
   const now = dayjs();
