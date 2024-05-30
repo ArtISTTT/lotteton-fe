@@ -11,7 +11,7 @@ import Waiting from './waiting.vue';
 import Process from './process.vue';
 import Header from '@/components/common/header/index.vue';
 
-const isWaiting = false;
+const isWaiting = true;
 
 const startGame = () => {
   isWaiting = false;

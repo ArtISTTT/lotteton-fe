@@ -22,7 +22,7 @@ export const createTonConnect = async () => {
     manifestUrl: import.meta.env.VITE_MANIFEST_URL,
   }) as TonConnectUI;
 
-  await new Promise(resolve => setTimeout(resolve, 200));
+  await new Promise(resolve => setTimeout(resolve, 500));
 
   return tonConnectUIInstance;
 };
