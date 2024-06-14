@@ -2,6 +2,7 @@ import { defineStore, Store, StoreDefinition } from 'pinia';
 import type { IGame, IPrevGameItem, IUser } from '../types/store';
 import { TonConnectUI } from '@tonconnect/ui';
 import { IBEUser } from '@/types/api';
+import { postDailyDrop } from '@/api/drop';
 
 export interface IStoreData {
   user: IUser | null | undefined;
@@ -25,5 +26,20 @@ export const useAppStore: IStoreDef = defineStore('app', {
       authChecked: false,
     };
   },
-  actions: {},
+  actions: {
+    async getDrop() {
+      if (this.user) {
+        const updatedUser = await postDailyDrop({
+          walletId: this.user.address,
+        });
+      
+        this.updateUser(updatedUser);
+      }
+    },
+    updateUser(data: Partial<IUser>) {
+      if (this.user) {
+        this.user = { ...this.user, ...data };
+      }
+    },
+  },
 });

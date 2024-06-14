@@ -1,16 +1,15 @@
 <template>
   <div class="btn-wrapper">
-    <div class="time-left">
+    <div class="time-left" v-if="!canGetDrop">
       <span>Next drop in</span>
       <countdown
-        v-if="timeLeftForDropMs !== 0"
         :time="timeLeftForDropMs"
         format="HH:mm:ss"
         class="time-left"
       />
     </div>
     <button
-      v-if="timeLeftForDropMs === 0"
+      v-if="canGetDrop"
       class="glowing-btn small"
       @click="$emit('onGetDrop')"
     >
@@ -25,24 +24,41 @@
 <script setup>
 import { useAppStore } from '@/stores';
 import dayjs from 'dayjs';
-import { computed } from 'vue';
+import { computed, onMounted, ref, watch, onUnmounted } from 'vue';
 
-const { user } = useAppStore();
+const store = useAppStore();
+const timeLeftForDropMs = ref(null);
+const canGetDrop = ref(false);
 
-const timeLeftForDropMs = computed(() => {
-  return 1;
-  // lastDailyDrop is a dayjs when i got last drop. Drop can be done onse per 24 hours
-  const lastDailyDrop = user.lastDailyDrop;
+const updateTimeLeft = () => {
+  if (!store.user || !store.user.nextDrop) return;
+
   const now = dayjs();
+  const nextDropDate = dayjs(store.user.nextDrop);
+  const diff = nextDropDate.diff(now);
 
-  if (!lastDailyDrop) {
-    return 0;
+  if (diff <= 0) {
+    timeLeftForDropMs.value = 0;
+    canGetDrop.value = true;
+  } else {
+    timeLeftForDropMs.value = diff;
+    canGetDrop.value = false;
   }
+};
 
-  const diff = now.diff(lastDailyDrop, 'millisecond');
-  const timeLeft = 24 * 60 * 60 * 1000 - diff;
+watch(() => store.user, (newUser) => {
+  if (newUser) {
+    updateTimeLeft();
+  }
+}, { immediate: true, deep: true });
 
-  return timeLeft > 0 ? timeLeft : 0;
+onMounted(() => {
+  updateTimeLeft();
+  const timer = setInterval(updateTimeLeft, 1000);
+
+  onUnmounted(() => {
+    clearInterval(timer);
+  });
 });
 </script>
 
