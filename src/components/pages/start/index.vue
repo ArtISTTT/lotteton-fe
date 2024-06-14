@@ -5,7 +5,7 @@
     </div>
 
     <div class="info zilla-slab-medium">
-      <h1>Wallet battle</h1>
+      <h1>Wallet Battle</h1>
       <h3>First and honest TON network game</h3>
     </div>
 

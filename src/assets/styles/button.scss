@@ -1,5 +1,4 @@
 button {
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.16);
   padding: 12px 24px 12px 20px;
   display: flex;
   align-items: center;
@@ -12,12 +11,13 @@ button {
   font-weight: 590;
   line-height: 18px;
   transition: transform 0.125s ease-in-out;
-  width: 100%;
   border-radius: 24px;
 
   &.orange {
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.16);
     background-color: #e8820a;
     color: #ffffff;
+    width: 100%;
   }
 
   &.disabled {

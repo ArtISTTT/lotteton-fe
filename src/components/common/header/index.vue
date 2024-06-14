@@ -2,9 +2,12 @@
   <div class="header">
     <div class="left">
       <!-- <div class="name">Address</div> -->
-      <div class="value">
+      <!-- <div class="value">
         {{ formattedAddress }}
-      </div>
+      </div> -->
+      <button class="logout-btn" @click="auth.logout()">
+        Logout
+      </button>
     </div>
     <div class="right">
       <!-- <div class="name">Balance</div> -->
@@ -20,7 +23,9 @@
 import { computed } from 'vue';
 import { useAppStore } from '@/stores';
 import { Address } from '@/utils/ton-access';
+import useAuth from '@/hooks/auth';
 
+const auth = useAuth();
 const store = useAppStore();
 
 const formattedAddress = computed(() => {

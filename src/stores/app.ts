@@ -41,5 +41,9 @@ export const useAppStore: IStoreDef = defineStore('app', {
         this.user = { ...this.user, ...data };
       }
     },
+    logout () {
+      this.tonConnectUIInstance?.disconnect()
+      this.user = null
+    }
   },
 });
