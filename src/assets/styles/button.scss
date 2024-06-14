@@ -1,0 +1,27 @@
+button {
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.16);
+  padding: 12px 24px 12px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  height: 40px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 590;
+  line-height: 18px;
+  transition: transform 0.125s ease-in-out;
+  width: 100%;
+  border-radius: 24px;
+
+  &.orange {
+    background-color: #e8820a;
+    color: #ffffff;
+  }
+
+  &.disabled {
+    background-color: rgb(160, 160, 160);
+    pointer-events: none;
+  }
+}

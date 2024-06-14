@@ -1,12 +1,9 @@
 .home {
     height: 100dvh;
-    background: url('@/assets/images/bg-1.webp');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position-y: bottom;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    align-items: center;
 
     .player-item {
         margin-bottom: 32px;

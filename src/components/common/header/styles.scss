@@ -1,8 +1,4 @@
 .header {
-    position: absolute;
-    top: 16px;
-    right: 16px;
-    left: 16px;
     background: linear-gradient(37deg, #1C2226 20%, rgba(80,185,243,1) 100%);
     border-radius: 8px;
     display: flex;
@@ -14,6 +10,8 @@
     align-items: center;
     justify-content: space-between;
     padding: 8px;
+    width: 100%;
+    margin: 10px;
 
     .left {
         width: 50%;

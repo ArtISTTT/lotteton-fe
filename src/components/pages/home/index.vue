@@ -3,7 +3,7 @@
     <!-- <GamesTable /> -->
     <Header />
     <Player class="player-item" />
-    <PlayButton @onFight="onFight" @onGetDrop="onGetDrop" />
+    <PlayButton @onFight="onFight" />
   </div>
 </template>
 
@@ -19,10 +19,6 @@ const store = useAppStore();
 
 const onFight = () => {
   router.push({ name: 'game' });
-};
-
-const onGetDrop = async () => {
-  store.getDrop()
 };
 </script>
 

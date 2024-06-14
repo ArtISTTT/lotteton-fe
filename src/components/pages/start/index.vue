@@ -1,8 +1,7 @@
 <template>
   <div class="start">
-    <div class="ton-fight">TON FIGHT</div>
     <div class="boss">
-      <img class="boss-img" src="@/assets/images/preview1.webp" />
+      <img class="boss-img" src="@/assets/images/log-in-image.jpeg" />
     </div>
 
     <div class="bottom">

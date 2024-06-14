@@ -1,22 +1,24 @@
 <template>
   <div class="btn-wrapper">
-    <div class="time-left" v-if="!canGetDrop">
-      <span>Next drop in</span>
-      <countdown
-        :time="timeLeftForDropMs"
-        format="HH:mm:ss"
-        class="time-left"
-      />
-    </div>
     <button
-      v-if="canGetDrop"
-      class="glowing-btn small"
-      @click="$emit('onGetDrop')"
+      class="small orange zilla-slab-medium"
+      :class="{ disabled: !canGetDrop || isGetDropBtnDisabled }"
+      @click="onGetDrop"
     >
-      <span class="glowing-txt">GET +42 durev</span>
+      <template v-if="canGetDrop">
+        <span>GET +42 durev</span>
+      </template>
+      <template v-else>
+        <span>Next drop in</span>
+        <countdown
+          :time="timeLeftForDropMs"
+          format="HH:mm:ss"
+          class="time-left"
+        />
+      </template>
     </button>
-    <button v-else class="glowing-btn" @click="$emit('onFight')">
-      <span class="glowing-txt">F<span class="faulty-letter">I</span>GHT</span>
+    <button class="orange zilla-slab-medium" @click="$emit('onFight')">
+      <span >F<span>I</span>GHT</span>
     </button>
   </div>
 </template>
@@ -29,6 +31,7 @@ import { computed, onMounted, ref, watch, onUnmounted } from 'vue';
 const store = useAppStore();
 const timeLeftForDropMs = ref(null);
 const canGetDrop = ref(false);
+const isGetDropBtnDisabled = ref(false);
 
 const updateTimeLeft = () => {
   if (!store.user || !store.user.nextDrop) return;
@@ -60,6 +63,12 @@ onMounted(() => {
     clearInterval(timer);
   });
 });
+
+const onGetDrop = async () => {
+  isGetDropBtnDisabled.value = true
+  await store.getDrop()
+  isGetDropBtnDisabled.value = false
+};
 </script>
 
 <style scoped lang="scss" src="./styles.scss">
