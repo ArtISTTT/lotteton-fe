@@ -1,16 +1,14 @@
 .start {
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: space-between;
   height: 100dvh;
   background: #03030f;
 
-  .boss {
+  .top {
     width: fit-content;
     margin: 0 auto;
     position: relative;
-    margin-top: 20vh;
-    height: 85%;
 
     &-img {
       width: 100vw;
@@ -47,51 +45,23 @@
     }
   }
 
+  .info {
+    color: #747679;
+    margin-bottom: 30vw;
+  }
+
   .bottom {
-    padding-bottom: 10vw;
     display: flex;
     justify-content: center;
     align-items: start;
+    padding: 5vw;
 
-    .connect-button {
+    button {
+      height: 50px;
+      font-weight: 600;
+      font-size: 20px;
       &:focus {
         outline: none;
-      }
-    }
-
-    .connect-button {
-      background-color: #e8820a;
-      color: #ffffff;
-      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.16);
-      padding: 12px 24px 12px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 4px;
-      height: 52px;
-      border: none;
-      border-radius: 100vh;
-      cursor: pointer;
-      font-size: 14px;
-      font-weight: 590;
-      line-height: 18px;
-      transition: transform 0.125s ease-in-out;
-      width: 80%;
-
-      &:hover {
-        transform: scale(1.02);
-      }
-
-      img {
-        width: 28px;
-        height: 28px;
-      }
-
-      & > div {
-        font-weight: 590;
-        font-size: 19px;
-        line-height: 22px;
-        color: #ffffff;
       }
     }
   }
